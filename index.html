@@ -29,7 +29,7 @@
             font-family: 'Courier New', Courier, monospace; /* Console font */
         }
         .title {
-            font-size: 24px;
+            font-size: 28px; /* Larger size for title */
             font-weight: bold;
             margin-bottom: 40px; /* More space below the title */
             font-family: 'Courier New', Courier, monospace; /* Console font */
@@ -42,6 +42,21 @@
             font-family: 'Courier New', Courier, monospace; /* Console font */
             margin-top: 40px; /* Space above the resume */
             text-align: left; /* Left align the resume */
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .skills {
+            margin-top: 20px; /* Space above skills section */
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+        }
+        .skills-column {
+            display: inline-block;
+            width: 45%; /* Two columns */
+            vertical-align: top; /* Align top */
+        }
+        .skills-column:first-child {
+            margin-right: 5%; /* Margin between columns */
         }
         @keyframes blink-caret {
             from { border-color: transparent; }
@@ -58,11 +73,13 @@
         const titleText = "Hello.";
         const contentText = "\n\nWelcome to my official website\nThis is jorgejosecontreras.com\nCreated by Jorge Jose Contreras";
         const footerText = "\n\nEmail inquiries to jorgec@usa.com";
-        const resumeText = "\n\nResume\n\nJorge Jose Contreras\nFrontend Developer\n\nExperience:\n- Company A, Software Engineer, 2018 - 2022\n- Company B, Web Developer, 2015 - 2018\n\nEducation:\n- University A, B.S. in Computer Science, 2015";
+        const resumeText = "\n\n<b>Resume</b>\n\nJorge Jose Contreras\nBroward, Miami-Dade, Palm Beach Counties\n\n<b>Experience:</b>\n- Company A, Software Engineer, 2018 - 2022\n- Company B, Web Developer, 2015 - 2018\n\n<b>Education:</b>\n- University A, B.S. in Computer Science, 2015";
+        const skillsText = "\n\n<b>Skills:</b>\n\nColumn 1:\n- Skill 1\n- Skill 2\n- Skill 3";
 
         let index = 0;
         let isTitleTyped = false;
         let isContentTyped = false;
+        let isFooterTyped = false;
         let isResumeTyped = false;
 
         function type() {
@@ -86,6 +103,16 @@
                     index = 0;
                     setTimeout(type, 500); // Pause before starting the footer text
                 }
+            } else if (!isFooterTyped) {
+                if (index < footerText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText.slice(0, index + 1)}</footer>`;
+                    index++;
+                    setTimeout(type, 50); // Speed for footer text
+                } else {
+                    isFooterTyped = true;
+                    index = 0;
+                    setTimeout(type, 500); // Pause before starting the resume text
+                }
             } else if (!isResumeTyped) {
                 if (index < resumeText.length) {
                     document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeText.slice(0, index + 1)}</footer>`;
@@ -93,6 +120,14 @@
                     setTimeout(type, 50); // Speed for resume text
                 } else {
                     isResumeTyped = true;
+                    index = 0;
+                    setTimeout(type, 500); // Pause before starting the skills text
+                }
+            } else {
+                if (index < skillsText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeText}<div class="skills">${skillsText.slice(0, index + 1)}</div></footer>`;
+                    index++;
+                    setTimeout(type, 50); // Speed for skills text
                 }
             }
         }
