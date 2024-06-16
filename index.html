@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Style Page</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00; /* Matrix green color */
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        .typewriter {
+            white-space: pre; /* Preserve whitespace for newlines */
+            overflow: hidden; /* Hide overflow */
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px; /* More space below the title */
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+        }
+        footer {
+            white-space: pre; /* Preserve whitespace for newlines */
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+        }
+        @keyframes blink-caret {
+            from { border-color: transparent; }
+            to { border-color: #00FF00; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="typewriter" id="typewriter"></div>
+    </div>
+
+    <script>
+        const titleText = "Hello.";
+        const contentText = "\n\nWelcome to my official website\nThis is jorgejosecontreras.com\nCreated by Jorge Jose Contreras";
+        const footerText = "\n\nEmail inquiries to jorgec@usa.com";
+
+        let index = 0;
+        let isTitleTyped = false;
+        let isContentTyped = false;
+
+        function type() {
+            if (!isTitleTyped) {
+                if (index < titleText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText.slice(0, index + 1)}</span>`;
+                    index++;
+                    setTimeout(type, 150); // Slow speed for title
+                } else {
+                    isTitleTyped = true;
+                    index = 0;
+                    setTimeout(type, 500); // Pause before starting the next text
+                }
+            } else if (!isContentTyped) {
+                if (index < contentText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText.slice(0, index + 1)}`;
+                    index++;
+                    setTimeout(type, 50); // Faster speed for paragraph
+                } else {
+                    isContentTyped = true;
+                    index = 0;
+                    setTimeout(type, 500); // Pause before starting the footer text
+                }
+            } else {
+                if (index < footerText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText.slice(0, index + 1)}</footer>`;
+                    index++;
+                    setTimeout(type, 50); // Speed for footer text
+                }
+            }
+        }
+
+        window.onload = type;
+    </script>
+</body>
+</html>
