@@ -29,7 +29,7 @@
             font-family: 'Courier New', Courier, monospace; /* Console font */
         }
         .title {
-            font-size: 28px; /* Larger size for title */
+            font-size: 24px; /* Smaller size for title */
             font-weight: bold;
             margin-bottom: 40px; /* More space below the title */
             font-family: 'Courier New', Courier, monospace; /* Console font */
@@ -38,9 +38,18 @@
             white-space: pre; /* Preserve whitespace for newlines */
             font-family: 'Courier New', Courier, monospace; /* Console font */
         }
-        .resume {
+        .resume-title {
+            font-size: 24px; /* Same size as title */
+            font-weight: bold;
+            margin-top: 10px; /* Reduced space above the resume title */
+            margin-bottom: 10px; /* Reduced space below the resume title */
             font-family: 'Courier New', Courier, monospace; /* Console font */
-            margin-top: 40px; /* Space above the resume */
+        }
+        .resume {
+            font-size: 24px; /* Same size as title */
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+            margin-top: 10px; /* Reduced space above the resume */
+            margin-bottom: 20px; /* Reduced space below the resume */
             text-align: left; /* Left align the resume */
         }
         .bold {
@@ -50,13 +59,15 @@
             margin-top: 20px; /* Space above skills section */
             font-family: 'Courier New', Courier, monospace; /* Console font */
         }
-        .skills-column {
-            display: inline-block;
-            width: 45%; /* Two columns */
-            vertical-align: top; /* Align top */
+        .experience {
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+            margin-top: 20px; /* Space above experience section */
+            text-align: left; /* Left align the experience section */
         }
-        .skills-column:first-child {
-            margin-right: 5%; /* Margin between columns */
+        .education {
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+            margin-top: 20px; /* Space above education section */
+            text-align: left; /* Left align the education section */
         }
         @keyframes blink-caret {
             from { border-color: transparent; }
@@ -73,13 +84,15 @@
         const titleText = "Hello.";
         const contentText = "\n\nWelcome to my official website\nThis is jorgejosecontreras.com\nCreated by Jorge Jose Contreras";
         const footerText = "\n\nEmail inquiries to jorgec@usa.com";
-        const resumeText = "\n\n<b>Resume</b>\n\nJorge Jose Contreras\nBroward, Miami-Dade, Palm Beach Counties\n\n<b>Experience:</b>\n- Company A, Software Engineer, 2018 - 2022\n- Company B, Web Developer, 2015 - 2018\n\n<b>Education:</b>\n- University A, B.S. in Computer Science, 2015";
-        const skillsText = "\n\n<b>Skills:</b>\n\nColumn 1:\n- Skill 1\n- Skill 2\n- Skill 3";
+        const resumeTitleText = "\n\n<h2>Resume</h2>";
+        const resumeText = "\nJorge Jose Contreras\nBroward, Miami-Dade, Palm Beach Counties\n\n<b>Education:</b>\n- University A, B.S. in Computer Science, 2015\n\n<b>Experience:</b>\n- Company A, Software Engineer, 2018 - 2022\n- Company B, Web Developer, 2015 - 2018\n- Company C, Frontend Developer, 2012 - 2015\n- Company D, Systems Analyst, 2009 - 2012\n- Company E, IT Technician, 2006 - 2009\n- Company F, Project Manager, 2004 - 2006\n- Company G, Technical Support, 2002 - 2004\n\n<b>Additional Experience:</b>\n- Company H, UX Designer, 2000 - 2002\n- Company I, Network Administrator, 1998 - 2000";
+        const skillsText = "\n\n<b>Skills:</b>\n\n- Skill 1\n- Skill 2\n- Skill 3\n- Skill 4\n- Skill 5\n- Skill 6\n- Skill 7";
 
         let index = 0;
         let isTitleTyped = false;
         let isContentTyped = false;
         let isFooterTyped = false;
+        let isResumeTitleTyped = false;
         let isResumeTyped = false;
 
         function type() {
@@ -111,11 +124,21 @@
                 } else {
                     isFooterTyped = true;
                     index = 0;
+                    setTimeout(type, 500); // Pause before starting the resume title
+                }
+            } else if (!isResumeTitleTyped) {
+                if (index < resumeTitleText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText.slice(0, index + 1)}</footer>`;
+                    index++;
+                    setTimeout(type, 50); // Speed for resume title text
+                } else {
+                    isResumeTitleTyped = true;
+                    index = 0;
                     setTimeout(type, 500); // Pause before starting the resume text
                 }
             } else if (!isResumeTyped) {
                 if (index < resumeText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeText.slice(0, index + 1)}</footer>`;
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText.slice(0, index + 1)}</footer>`;
                     index++;
                     setTimeout(type, 50); // Speed for resume text
                 } else {
@@ -125,7 +148,7 @@
                 }
             } else {
                 if (index < skillsText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeText}<div class="skills">${skillsText.slice(0, index + 1)}</div></footer>`;
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText}<div class="skills">${skillsText.slice(0, index + 1)}</div></footer>`;
                     index++;
                     setTimeout(type, 50); // Speed for skills text
                 }
