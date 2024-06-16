@@ -1,1 +1,0 @@
-# jorgejosecontreras.github.io
