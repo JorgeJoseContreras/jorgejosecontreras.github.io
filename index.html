@@ -1,4 +1,4 @@
-lo<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,6 +38,11 @@ lo<!DOCTYPE html>
             white-space: pre; /* Preserve whitespace for newlines */
             font-family: 'Courier New', Courier, monospace; /* Console font */
         }
+        .resume {
+            font-family: 'Courier New', Courier, monospace; /* Console font */
+            margin-top: 40px; /* Space above the resume */
+            text-align: left; /* Left align the resume */
+        }
         @keyframes blink-caret {
             from { border-color: transparent; }
             to { border-color: #00FF00; }
@@ -51,12 +56,14 @@ lo<!DOCTYPE html>
 
     <script>
         const titleText = "Hello.";
-        const contentText = "\n\nWelcome to my official website\nThis is jorgejosecontreras.com\nDeveloped by Jorge Jose Contreras.";
+        const contentText = "\n\nWelcome to my official website\nThis is jorgejosecontreras.com\nCreated by Jorge Jose Contreras";
         const footerText = "\n\nEmail inquiries to jorgec@usa.com";
+        const resumeText = "\n\nResume\n\nJorge Jose Contreras\nFrontend Developer\n\nExperience:\n- Company A, Software Engineer, 2018 - 2022\n- Company B, Web Developer, 2015 - 2018\n\nEducation:\n- University A, B.S. in Computer Science, 2015";
 
         let index = 0;
         let isTitleTyped = false;
         let isContentTyped = false;
+        let isResumeTyped = false;
 
         function type() {
             if (!isTitleTyped) {
@@ -79,11 +86,13 @@ lo<!DOCTYPE html>
                     index = 0;
                     setTimeout(type, 500); // Pause before starting the footer text
                 }
-            } else {
-                if (index < footerText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText.slice(0, index + 1)}</footer>`;
+            } else if (!isResumeTyped) {
+                if (index < resumeText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeText.slice(0, index + 1)}</footer>`;
                     index++;
-                    setTimeout(type, 50); // Speed for footer text
+                    setTimeout(type, 50); // Speed for resume text
+                } else {
+                    isResumeTyped = true;
                 }
             }
         }
