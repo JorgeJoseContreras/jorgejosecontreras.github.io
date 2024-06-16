@@ -37,11 +37,12 @@
         footer {
             white-space: pre; /* Preserve whitespace for newlines */
             font-family: 'Courier New', Courier, monospace; /* Console font */
+            margin-top: 20px; /* Space above footer */
         }
         .resume-title {
             font-size: 24px; /* Same size as title */
             font-weight: bold;
-            margin-top: 20px; /* Space above the resume title */
+            margin-top: 40px; /* Increased space above the resume title */
             font-family: 'Courier New', Courier, monospace; /* Console font */
         }
         .resume {
@@ -56,20 +57,26 @@
         .skills {
             margin-top: 20px; /* Space above skills section */
             font-family: 'Courier New', Courier, monospace; /* Console font */
+            position: relative; /* Ensure position relative for absolute cursor */
         }
-        .experience {
+        .extra-info {
+            margin-top: 40px; /* Increased space above extra info */
+            text-align: center; /* Center align the extra info */
             font-family: 'Courier New', Courier, monospace; /* Console font */
-            margin-top: 20px; /* Space above experience section */
-            text-align: left; /* Left align the experience section */
         }
-        .education {
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-            margin-top: 20px; /* Space above education section */
-            text-align: left; /* Left align the education section */
+        .extra-info .line {
+            margin-top: 10px; /* Space between lines */
+        }
+        .email-link {
+            color: #00FF00; /* Matrix green color */
+            text-decoration: none;
+        }
+        .email-link:hover {
+            text-decoration: underline;
         }
         @keyframes blink-caret {
-            from { border-color: transparent; }
-            to { border-color: #00FF00; }
+            from, to { border-color: transparent; }
+            50% { border-color: #00FF00; }
         }
     </style>
 </head>
@@ -81,17 +88,20 @@
     <script>
         const titleText = "<h1>Hello.</h1>";
         const contentText = "Welcome to my official website\nThis is jorgejosecontreras.com\nDeveloped by Jorge Jose Contreras";
-        const footerText = "\nEmail inquiries to jorgec@usa.com";
+        const footerText = "\nEmail inquiries to <a href='mailto:jcontreras2020@fau.edu' class='email-link'>jcontreras2020@fau.edu</a>";
         const resumeTitleText = "<h2>Resume</h2>";
         const resumeText = "Broward, Miami-Dade, Palm Beach Counties\n\n<b>Education:</b>\nFlorida Atlantic University, B.B.A. in Finance, 2024\n\n<b>Experience:</b>\nDC Construction Associates, Inc., Accounting Assistant, 2024 - Current\nAirline Spares America, Inc., Bookkeeping Assistant, 2022 - 2024\nASI Aero, Inc., Data Entry Clerk, 2021 - 2022\nSunniland Patio, Inc., Administrative Assistant, 2020 - 2021\nAirline Spares America, Inc., Administrative Assistant, 2018 - 2020";
-        const skillsText = "<b>Skills:</b>\nC & HTML\nQuickBooks\nMicrosoft Office\nComponent Control\nAdobe Creative Cloud";
-
+        const skillsText = "<div class='skills'><b>Skills:</b><br>C & HTML<br>QuickBooks<br>Microsoft Office<br>Component Control<br>Adobe Creative Cloud</div>";
+        const extraInfoText = "\n\n<b>Contreras Capital Group Limited Company</b><div class='line'>NAV Price: $1.00</div><div class='line'>Amount of Units: 10,000</div><div class='line'>Market Cap: $10,000.00\n\n<a href='mailto:jorgec@usa.com' class='email-link'>View Holdings</a>\n\n\nEmail inquiries to <a href='https://www.google.com' class='email-link'>jorgec@usa.com</a>\n\n\n\n\n© Copyright 2024 Jorge Jose Contreras\n\n\n</div>";
+        
         let index = 0;
         let isTitleTyped = false;
         let isContentTyped = false;
         let isFooterTyped = false;
         let isResumeTitleTyped = false;
         let isResumeTyped = false;
+        let isSkillsTyped = false;
+        let isExtraInfoTyped = false;
 
         function type() {
             if (!isTitleTyped) {
@@ -144,11 +154,25 @@
                     index = 0;
                     setTimeout(type, 500); // Pause before starting the skills text
                 }
-            } else {
+            } else if (!isSkillsTyped) {
                 if (index < skillsText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText}<div class="skills">${skillsText.slice(0, index + 1)}</div></footer>`;
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText}${skillsText.slice(0, index + 1)}</footer>`;
                     index++;
                     setTimeout(type, 50); // Speed for skills text
+                } else {
+                    isSkillsTyped = true;
+                    index = 0;
+                    setTimeout(type, 500); // Pause before starting the extra info text
+                }
+            } else if (!isExtraInfoTyped) {
+                if (index < extraInfoText.length) {
+                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText}${skillsText}${extraInfoText.slice(0, index + 1)}</footer>`;
+                    index++;
+                    setTimeout(type, 50); // Speed for extra info text
+                } else {
+                    isExtraInfoTyped = true;
+                    index = 0;
+                    // End of typing sequence
                 }
             }
         }
