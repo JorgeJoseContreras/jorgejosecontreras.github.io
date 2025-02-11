@@ -3,181 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jorge</title>
+    <title>Resume</title>
     <style>
         body {
-            background-color: black;
-            color: #00FF00; /* Matrix green color */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-            font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
         .container {
-            text-align: center;
-            position: relative;
+            width: 85%; max-width: none;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            animation: pulseShadow 4s infinite alternate; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
         }
         .typewriter {
-            white-space: pre; /* Preserve whitespace for newlines */
-            overflow: hidden; /* Hide overflow */
-            display: inline-block;
-            font-family: 'Courier New', Courier, monospace; /* Console font */
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 3s steps(40, end) forwards;
         }
-        .title {
-            font-size: 24px; /* Smaller size for title */
-            font-weight: bold;
-            margin-bottom: 30px; /* More space below the title */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
-        footer {
-            white-space: pre; /* Preserve whitespace for newlines */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-            margin-top: 20px; /* Space above footer */
-        }
-        .resume-title {
-            font-size: 24px; /* Same size as title */
-            font-weight: bold;
-            margin-top: 40px; /* Increased space above the resume title */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-        }
-        .resume {
-            font-size: 24px; /* Same size as title */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-            margin-top: 15px; /* Space above the resume */
-            text-align: left; /* Left align the resume */
-        }
-        .bold {
-            font-weight: bold;
-        }
-        .skills {
-            margin-top: 20px; /* Space above skills section */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-            position: relative; /* Ensure position relative for absolute cursor */
-        }
-        .extra-info {
-            margin-top: 40px; /* Increased space above extra info */
-            text-align: center; /* Center align the extra info */
-            font-family: 'Courier New', Courier, monospace; /* Console font */
-        }
-        .extra-info .line {
-            margin-top: 10px; /* Space between lines */
-        }
-        .email-link {
-            color: #00FF00; /* Matrix green color */
-            text-decoration: none;
-        }
-        .email-link:hover {
-            text-decoration: underline;
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #00FF00; }
+    @keyframes pulseShadow {
+            0% { box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); }
+            100% { box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.5); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="typewriter" id="typewriter"></div>
-    </div>
-
-    <script>
-        const titleText = "\n\n\n\n\n<h1>Hello.</h1>";
-        const contentText = "Welcome to my official website\nThis is jorgejosecontreras.com\nDeveloped by Jorge Jose Contreras";
-        const footerText = "\nEmail inquiries to <a href='mailto:jcontreras2020@fau.edu' class='email-link'>jcontreras2020@fau.edu</a>";
-        const resumeTitleText = "<h2>Resume</h2>";
-        const resumeText = "Broward, Miami-Dade, Palm Beach Counties\n\n<b>Education:</b>\nFlorida Atlantic University, B.B.A. in Finance, 2024\n\n<b>Experience:</b>\nDC Construction Associates, Inc., Accounting Assistant, 2024 - Current\nAirline Spares America, Inc., Bookkeeping Assistant, 2022 - 2024\nASI Aero, Inc., Data Entry Clerk, 2021 - 2022\nSunniland Patio, Inc., Administrative Assistant, 2020 - 2021\nAirline Spares America, Inc., Administrative Assistant, 2018 - 2020";
-        const skillsText = "<div class='skills'><b>Skills:</b><br>C & HTML<br>QuickBooks<br>Microsoft Office<br>Component Control<br>Adobe Creative Cloud</div>";
-        const extraInfoText = "\n\n<b>Contreras Capital Group Ltd. Co.</b>\n<a href='https://www.myiclub.com/' class='email-link'>View Club</a>\n\n\n\n© Copyright 2024 Jorge Jose Contreras</div>";
+        <header style="text-align: center;">
+            <h1 class="typewriter">Jorge Contreras</h1>
+            <p class="typewriter"> jorgec@usa.com | 954 999 7574 | <a href="https://www.linkedin.com/in/jorgejcontreras/" style="color: blue; text-decoration: none;">LinkedIn</a></p>
+        </header>
         
-        let index = 0;
-        let isTitleTyped = false;
-        let isContentTyped = false;
-        let isFooterTyped = false;
-        let isResumeTitleTyped = false;
-        let isResumeTyped = false;
-        let isSkillsTyped = false;
-        let isExtraInfoTyped = false;
+        <!-- Education on top -->
+        <div class="section">
+            <h2 class="typewriter">Education</h2>
+            <p class="typewriter" style="margin-bottom: 2px;"><strong>B.B.A. in Finance</strong> - Florida Atlantic University (August 2024)</p>
+            <p class="typewriter" style="margin-top: 0; margin-bottom: 2px;"><strong>B.B.A. in Accounting</strong> - Florida Atlantic University (Expected July 2026)</p>
+        </div>
+        <!-- Experience below Education -->
+        <div class="section">
+            <h2 class="typewriter">Experience</h2>
+            <!-- Accountant -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Accountant</strong> - <a href="https://www.dcconstructionassociates.com/" style="color: blue; text-decoration: none;">DC Construction Associates, Inc.</a> (<span style="font-size: 0.9em;">Jun 2024 - Present</span>) | <span style="font-size: 0.9em;">Delray Beach, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Processing and payment of invoices totaling over $200 million in value.</li>
+                <li class="typewriter">Reconciling credit card charges for more than 60 authorized users.</li>
+            </ul>
+            <!-- Bookkeeping Assistant -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Bookkeeping Assistant</strong> - <a href="https://www.asaspares.com" style="color: blue; text-decoration: none;">Airline Spares America, Inc.</a> (<span style="font-size: 0.9em;">Dec 2022 – Jan 2024</span>) | <span style="font-size: 0.9em;">Deerfield Beach, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Analyze trends, variances, and key financial metrics to provide insights for decision-making.</li>
+                <li class="typewriter">Prepared, processed, and sent essential documents such as invoices and expense reports.</li>
+                <li class="typewriter">Assisted in the processing of invoices totaling over $3 million in value.</li>
+            </ul>
+            <!-- Administrative Assistant (Functional Rehab) -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Administrative Assistant</strong> - <a href="https://www.ftxwellness.com" style="color: blue; text-decoration: none;">Functional Rehab Solutions, LLC</a> (<span style="font-size: 0.9em;">Jan 2024 - Jun 2024</span>) | <span style="font-size: 0.9em;">Delray Beach, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Answer and direct incoming calls, greet visitors, and manage the front desk area.</li>
+                <li class="typewriter">Coordinate schedules, maintain office inventory, and handle general administrative tasks.</li>
+            </ul>
+            <!-- Sales & Finance Intern -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Sales & Finance Intern</strong> - <a href="https://www.asaspares.com" style="color: blue; text-decoration: none;">Airline Spares America, Inc.</a> (<span style="font-size: 0.9em;">Aug 2022 – Nov 2022</span>) | <span style="font-size: 0.9em;">Deerfield Beach, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Research and analyze pricing trends for airplane parts in different markets & increase efficiency.</li>
+                <li class="typewriter">Work with sales team to evaluate the financial viability of potential sales opportunities.</li>
+                <li class="typewriter">Collaborate with sales to maintain customer relationships.</li>
+            </ul>
+            <!-- Data Entry Clerk -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Data Entry Clerk</strong> - <a href="https://www.asiaero.com" style="color: blue; text-decoration: none;">ASI Aero, Inc.</a> (<span style="font-size: 0.9em;">Nov 2021 – Aug 2022</span>) | <span style="font-size: 0.9em;">Boca Raton, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Enforce strict quality control for receiving multiple shipments daily, report discrepancies and verify orders.</li>
+                <li class="typewriter">Implement a cost-effective inventory system and assess shipping/handling periods.</li>
+            </ul>
+            <!-- Medical Tester -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Medical Tester</strong> - <a href="https://www.ivconcierge.com" style="color: blue; text-decoration: none;">Healthcare Concierge, PLLC</a> (<span style="font-size: 0.9em;">Jun 2021 - Dec 2021</span>) | <span style="font-size: 0.9em;">Palm Beach - Dade</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Perform COVID-19 tests, handle sample collection, and maintain proper safety protocols.</li>
+                <li class="typewriter">Record patient data accurately, coordinate scheduling, and deliver test results promptly.</li>
+            </ul>
+            <!-- Assistant Part-Time -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Assistant Part-Time</strong> - <a href="https://www.sunnilandpatio.com" style="color: blue; text-decoration: none;">Sunniland Patio, Inc.</a> (<span style="font-size: 0.9em;">Jan 2020 – Dec 2021</span>) | <span style="font-size: 0.9em;">Boca Raton, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Categorize documents based on content and index them appropriately for streamlined retrieval.</li>
+                <li class="typewriter">Manage physical paperwork, prepare shipping documents, labels, invoices, and customs forms.</li>
+            </ul>
+            <!-- Administrative Assistant (Airline Spares) -->
+            <p class="typewriter" style="margin-bottom: 0px; font-size: 1.1em;"><strong>Administrative Assistant</strong> - <a href="https://www.asaspares.com" style="color: blue; text-decoration: none;">Airline Spares America, Inc.</a> (<span style="font-size: 0.9em;">Dec 2018 – Dec 2020</span>) | <span style="font-size: 0.9em;">Deerfield Beach, FL</span></p>
+            <ul style="margin-top: 0px; list-style-type: disc; color: black; padding-left: 20px;">
+                <li class="typewriter">Verify correct information, record minutes in team meetings, prepare detailed sales and inventory reports.</li>
+                <li class="typewriter">Contact vendors to receive quotes, analyze, compile and present data to the sales team.</li>
+            </ul>
+        </div>
 
-        function type() {
-            if (!isTitleTyped) {
-                if (index < titleText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText.slice(0, index + 1)}</span>`;
-                    index++;
-                    setTimeout(type, 150); // Slow speed for title
-                } else {
-                    isTitleTyped = true;
-                    index = 0;
-                    setTimeout(type, 500); // Pause before starting the next text
-                }
-            } else if (!isContentTyped) {
-                if (index < contentText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText.slice(0, index + 1)}`;
-                    index++;
-                    setTimeout(type, 50); // Faster speed for paragraph
-                } else {
-                    isContentTyped = true;
-                    index = 0;
-                    setTimeout(type, 500); // Pause before starting the footer text
-                }
-            } else if (!isFooterTyped) {
-                if (index < footerText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText.slice(0, index + 1)}</footer>`;
-                    index++;
-                    setTimeout(type, 50); // Speed for footer text
-                } else {
-                    isFooterTyped = true;
-                    index = 0;
-                    setTimeout(type, 500); // Pause before starting the resume title
-                }
-            } else if (!isResumeTitleTyped) {
-                if (index < resumeTitleText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText.slice(0, index + 1)}</footer>`;
-                    index++;
-                    setTimeout(type, 50); // Speed for resume title text
-                } else {
-                    isResumeTitleTyped = true;
-                    index = 0;
-                    setTimeout(type, 500); // Pause before starting the resume text
-                }
-            } else if (!isResumeTyped) {
-                if (index < resumeText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText.slice(0, index + 1)}</footer>`;
-                    index++;
-                    setTimeout(type, 50); // Speed for resume text
-                } else {
-                    isResumeTyped = true;
-                    index = 0;
-                    setTimeout(type, 500); // Pause before starting the skills text
-                }
-            } else if (!isSkillsTyped) {
-                if (index < skillsText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText}${skillsText.slice(0, index + 1)}</footer>`;
-                    index++;
-                    setTimeout(type, 50); // Speed for skills text
-                } else {
-                    isSkillsTyped = true;
-                    index = 0;
-                    setTimeout(type, 500); // Pause before starting the extra info text
-                }
-            } else if (!isExtraInfoTyped) {
-                if (index < extraInfoText.length) {
-                    document.getElementById("typewriter").innerHTML = `<span class="title">${titleText}</span>${contentText}<footer>${footerText}${resumeTitleText}${resumeText}${skillsText}${extraInfoText.slice(0, index + 1)}</footer>`;
-                    index++;
-                    setTimeout(type, 50); // Speed for extra info text
-                } else {
-                    isExtraInfoTyped = true;
-                    index = 0;
-                    // End of typing sequence
-                }
-            }
-        }
+        <!-- Memberships -->
+        <div class="section">
+            <h2 class="typewriter">Memberships</h2>
+            <p class="typewriter" style="margin: 0;"><strong>Notary Public, Florida</strong> | Commission #HH582781 (Aug 2024 - Present)</p>
+            <p class="typewriter" style="margin: 0;"><strong>The American Marketing Association, FAU</strong> (Jan 2021 - Present)</p>
+            <p class="typewriter" style="margin: 0;"><strong>The Investor’s Association, FAU</strong> (Sep 2020 - Present)</p>
+        </div>
 
-        window.onload = type;
-    </script>
+        <!-- Skills -->
+        <div class="section">
+            <h2 class="typewriter">Skills</h2>
+            <p class="typewriter" style="margin: 0;">Adobe CC, AWS, Component Control, HTML, ILS, Microsoft Office, MOS Excel, QuickBooks</p>
+        </div>    
+    </div>
 </body>
 </html>
